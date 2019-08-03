@@ -6,51 +6,50 @@ import random
 def value(pixel):
     return sum(pixel)
 
-def pixelSort(imageName, verticalBias, horizontalBias, numFrames, numCycles):
+def sortBySum(x):
+    x = list(x)
+    for i in range(len(x)):
+        for j in range(i):
+            if sum(x[i]) < sum(x[j]):
+                y = x.pop(i)
+                x.insert(j, y)
+                break
+    return np.array(x)
+
+def dist(x,y):
+    d = 0
+    for i in range(len(x)):
+        d += abs(x[i] - y[i])
+    return d
+
+def pixelSort(imageName, tol, numCycles):
     image = mpimg.imread(imageName)
+
     plt.imshow(image)
-    plt.show()
-    fig = plt.figure()
+    plt.show(block=False)
+    plt.pause(0.001)
     (m, n, l) = image.shape
     print(m,n,l)
+    fig = plt.figure()
+    plt.imshow(image)
+    fig.savefig('testSaveFig/'+str(0))
+    image = image.tolist()
 
-    for frame in range(numFrames):
-        print(frame)
-        for cycle in range(numCycles):
-            x = random.randint(0,m-1)
-            y = random.randint(0,n-1)
+    for cycle in range(numCycles):
+        print(cycle)
+        for row in range(m):
+            randCol = random.randint(0,n-1)
 
-            probVert = abs(verticalBias)/(verticalBias+horizontalBias)
+            j = randCol
+            while j > 1 and dist(image[row][j-1], image[row][randCol]) < tol:
+                j -= 1
+            k = randCol
+            while k+1 < n and dist(image[row][k+1], image[row][randCol]) < tol and sum(image[row][k]) < 2:
+                k += 1
+            image[row][j:k] = sortBySum(image[row][j:k])
 
-            if random.random()< probVert: #pick vertical direction
-                if y > 0:
-                    if value(image[x][y]) < value(image[x][y-1]):
-                        here = list(image[x][y])
-                        there = list(image[x][y-1])
-                        image[x][y] = there
-                        image[x][y-1] = here
-                else:
-                    if value(image[x][y]) < value(image[x][y+1]):
-                        here = list(image[x][y])
-                        there = list(image[x][y+1])
-                        image[x][y] = there
-                        image[x][y+1] = here
-            else: #pick horizontal direction
-                if x > 0:
-                    if value(image[x][y]) < value(image[x-1][y]):
-                        here = list(image[x][y])
-                        there = list(image[x-1][y])
-                        image[x][y] = there
-                        image[x-1][y] = here
-                else:
-                    if value(image[x][y]) < value(image[x+1][y]):
-                        here = list(image[x][y])
-                        there = list(image[x+1][y])
-                        image[x][y] = there
-                        image[x+1][y] = here
         plt.imshow(image)
-        fig.savefig('testSaveFig/'+str(frame))
-        print(sum(sum(sum(image))))
+        fig.savefig('testSaveFig/'+str(cycle+1))
 
 
-pixelSort('image.png',1,0,50,1000000)
+pixelSort('image.png',0.4,50)
