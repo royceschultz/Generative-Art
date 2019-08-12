@@ -10,14 +10,24 @@ This repo is a collection of image processing scripts.
 
 Randomly select and adjacent pair. If they are not in sorted order, swap them.
 
-![Pixel Sorting Gif](/Present/pixelBubbleSort.gif)
+![Pixel Sorting Gif](/Present/BubbleSort.gif)
 
 ### Method 2: Group Selection by Pixel Similarity
 
 Randomly select a 'seed' pixel on each row. Increase the sorting range to the left and right so long as the left and right pixels are within a prescribed tolerance of the seed pixel.
 
-![Pixel Sorting Gif](/Present/pixelSelectSort.gif)
+![Pixel Sorting Gif](/Present/SelectSort.gif)
 
 ## HDR
 
-//TODO
+// TODO
+Requires multiple image alignment (foundational for panorama stitching)
+
+## Panorama Stitching
+
+// TODO
+
+## Stereographic projection
+
+// TODO
+this technique is used to produce images for google street view

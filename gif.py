@@ -9,13 +9,12 @@ def getImagesinFolder(folder):
     images = []
     files = glob.glob(folder+'/*.png')
     files = sorted(files, key=lambda x:float(re.findall("(\d+)",x)[0]))
-    for filename in files: #assuming gif
+    for filename in files:
         print(filename)
         im=Image.open(filename)
         images.append(im)
     return images
 
-x = getImagesinFolder('testSaveFig')
+x = getImagesinFolder('SortImageFrames')
 print(len(x))
-
-imageio.mimsave('surface1.gif', x, duration = 0.1)
+imageio.mimsave('sorting.gif', x, duration = 0.1)
