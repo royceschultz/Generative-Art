@@ -24,15 +24,9 @@ def dist(x,y):
 
 def pixelSort(imageName, tol, numCycles):
     image = mpimg.imread(imageName)
-
-    plt.imshow(image)
-    plt.show(block=False)
-    plt.pause(0.001)
     (m, n, l) = image.shape
     print(m,n,l)
-    fig = plt.figure()
-    plt.imshow(image)
-    fig.savefig('testSaveFig/'+str(0))
+    mpimg.imsave('SortImageFrames/'+str(0)+'.png',image,format='png',dpi=100)
     image = image.tolist()
 
     for cycle in range(numCycles):
@@ -48,8 +42,9 @@ def pixelSort(imageName, tol, numCycles):
                 k += 1
             image[row][j:k] = sortBySum(image[row][j:k])
 
-        plt.imshow(image)
-        fig.savefig('testSaveFig/'+str(cycle+1))
+        image = np.array(image)
+        mpimg.imsave('SortImageFrames/'+str(cycle+1)+'.png',image,format='png',dpi=100)
+        image = image.tolist()
 
 
-pixelSort('image.png',0.4,50)
+pixelSort('image.png',0.42,100)
