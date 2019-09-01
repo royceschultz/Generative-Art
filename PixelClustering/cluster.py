@@ -14,7 +14,7 @@ pixels = im.reshape(-1,4)
 def select_pixels(px,n):
     return px[sorted(np.random.randint(0,len(px),n))]
 
-def ham_score(px1, px2):
+def manhatten_dist(px1, px2):
     return sum(abs(px1-px2)**2)**.5
 
 def frame(img,width=1): # Adds a white boarder
@@ -37,7 +37,7 @@ def generate_palette():
             min_dist = 9999
             min_idx = -1
             for k,y in enumerate(palette): # For each palette point
-                dist = ham_score(x,y)
+                dist = manhatten_dist(x,y)
                 if dist < min_dist: # Find the minimum distance
                     min_dist = dist
                     min_idx = k
@@ -55,13 +55,12 @@ def generate_palette():
 
 def save_frame(palette, filename):
     canvas = frame(palette.reshape(4,3,4))
-    cw,ch,cd = canvas.shape
-    ow,oh,od = 600,500,4
-    output = np.zeros((ow,oh,od))
+    cw,ch,cd = canvas.shape # Canvase size
+    ow,oh,od = 600,500,4 # Output size
+    output = np.zeros((ow,oh,od)) # Pre-allocate
     for x in range(ow):
         for y in range(oh):
-            output[x][y] = canvas[int(cw*x/ow),int(ch*y/oh)]
-
+            output[x][y] = canvas[int(cw*x/ow),int(ch*y/oh)] # Scale pixels to output size
     plt.imshow(output.astype('uint8'))
     matplotlib.image.imsave(filename,output.astype('uint8'))
 
@@ -69,5 +68,5 @@ for i in range(3):
     print(i)
     palette = generate_palette()
     for j in range(50):
-        np.random.shuffle(palette)
+        np.random.shuffle(palette) # Shuffle 50 copies of palette
         save_frame(palette,'output/'+str(i+1)+'-'+str(j+1)+'.png')

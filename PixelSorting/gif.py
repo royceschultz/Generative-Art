@@ -15,6 +15,7 @@ def getImagesinFolder(folder):
         images.append(im)
     return images
 
-x = getImagesinFolder('SortImageFrames')
-print(len(x))
-imageio.mimsave('sorting.gif', x, duration = 0.1)
+def gifFolder(folderName):
+    x = gif.getImagesinFolder(folderName)
+    print(len(x))
+    imageio.mimsave('sorting.gif', x, duration = 0.1)

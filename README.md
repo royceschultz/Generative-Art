@@ -22,7 +22,7 @@ Randomly select a 'seed' pixel on each row. Increase the sorting range to the le
 
 This method is inspired by Sherrie Levine's piece titled [Meltdown](https://www.moma.org/collection/works/65711).
 
-Randomly select 12 'palette' pixels from an image. Select another larger set of 'training' pixels. Match each pixel in the training set with a pixel in the palette by closest Hamming distance. Nudge the palette pixel a small step towards each paired pixel.
+Randomly select 12 'palette' pixels from an image. Select another larger set of 'training' pixels. Match each pixel in the training set with a pixel in the palette by closest manhatten distance. Nudge the palette pixel a small step towards each paired pixel.
 
 ![Pixel Clustering Image](/PixelClustering/Show/PixelClustering.png)
 
