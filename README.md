@@ -29,3 +29,7 @@ Randomly select 12 'palette' pixels from an image. Select another larger set of 
 The maximum pair distance converges when this process is repeated over many iterations.
 
 ![Cluster Convergence](/PixelClustering/Show/ClusterConvergence.png)
+
+## Recursively Generated Tree
+
+![Recursive Tree](/RecursiveTree/Show/RecursiveTree.gif)
