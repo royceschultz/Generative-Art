@@ -7,7 +7,8 @@ This repo is a collection of Generative Art scripts.
 ## Simplex Noise
 
 [Open Simplex noise](https://github.com/lmas/opensimplex) provides random, but smooth noise in up to 4 dimensions. We can create perfectly looping randomness without directional artifacts (appearance of stopping and reversing).
-[SimplexArrows](/Noise/Show/arrows2D.gif)
+
+![SimplexArrows](/Noise/Show/arrows2D.gif)
 
 ## Circle Packing ([Code](/CirclePacking/pack.py))
 
