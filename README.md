@@ -1,14 +1,16 @@
-# Image Processing Toolkit
+# Generative Art
 
 ## Abstract
 
 This repo is a collection of Generative Art scripts.
 
-## Simplex Noise
+## Simplex Noise([Code](/Noise/arrows2D.py))
 
-[Open Simplex noise](https://github.com/lmas/opensimplex) provides random, but smooth noise in up to 4 dimensions. We can create perfectly looping randomness without directional artifacts (appearance of stopping and reversing).
+[Open Simplex noise](https://github.com/lmas/opensimplex) provides random, but smooth noise in up to 4 dimensions. We can create perfectly looping randomness without directional artifacts (appearance of stopping and reversing) by traversing a 4D hyper-circle.
 
 ![SimplexArrows](/Noise/Show/arrows2D.gif)
+
+![SimplexLavaLamp](/Noise/Show/lamp.gif)
 
 ## Circle Packing ([Code](/CirclePacking/pack.py))
 
@@ -22,7 +24,7 @@ After some random seed iterations, other circles are added the maximum distance 
 
 Randomly select a 'seed' pixel on each row. Increase the sorting range to the left and right so long as the left and right pixels are within a prescribed tolerance of the seed pixel, then sort the selection.
 
-![Pixel Sorting Gif](/PixelSorting/Show/SelectSort.gif?)
+![Pixel Sorting Gif](/PixelSorting/Show/SelectSort.png)
 
 ## Pixel Clustering ([Code](/PixelClustering/cluster.py))
 
