@@ -9,7 +9,7 @@ def plot_arrow(x,y,dir):
     plt.plot([x,x+np.cos(dir)],[y,y+np.sin(dir)],c='b')
 
 simp = OpenSimplex()
-n = 256
+n = 512
 D_MAX = 2
 T_MAX = 2*np.pi
 NUM_FRAMES = 150
